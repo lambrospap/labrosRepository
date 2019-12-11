@@ -1,0 +1,19 @@
+import time
+import threading
+
+def details():
+    time.sleep(1)
+    print("I slept 1 second and then did my work")
+startTime = time.perf_counter()
+threads = []
+
+for x in range(10):
+    t = threading.Thread(target=details)
+    t.start()
+    threads.append(t)
+for thread in threads:
+    thread.join()
+
+endTime = time.perf_counter()
+ElapsedTime = endTime - startTime
+print("Elapsed time..", ElapsedTime)
